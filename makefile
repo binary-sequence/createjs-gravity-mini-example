@@ -1,5 +1,6 @@
 compile:
-	# TODO
+	jade -o build/html src/jade/
+	stylus -o build/css/ src/stylus/*
 
 docs:
 	# TODO
