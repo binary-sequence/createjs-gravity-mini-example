@@ -1,6 +1,7 @@
 compile:
 	jade -o build/html src/jade/
 	stylus -o build/css/ src/stylus/*
+	coffee -c -o build/js src/coffee
 
 docs:
 	# TODO
