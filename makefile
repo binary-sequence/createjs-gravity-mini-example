@@ -5,7 +5,7 @@ compile:
 docs:
 	# TODO
 
-install:
+install-dependencies:
 	# INSTALLING GIT
 	apt-get install git
 	# INSTALLING NODE.JS
