@@ -1,10 +1,12 @@
-compile:
+compile: force
 	jade -o build/html src/jade/
 	stylus -o build/css/ src/stylus/*
 	coffee -c -o build/js src/coffee
 
 docs:
 	# TODO
+
+force:
 
 install-dependencies:
 	# INSTALLING GIT
@@ -23,3 +25,6 @@ install-dependencies:
 	npm install -g jade
 	# INSTALLING STYLUS
 	npm install -g stylus
+
+tests: compile
+	google-chrome `pwd`/tests/html/tests.html
