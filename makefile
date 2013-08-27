@@ -3,8 +3,20 @@ compile: force
 	stylus -o build/css/ src/stylus/*
 	coffee -c -o build/js src/coffee
 
-docs:
-	# TODO
+docs: force
+	mkdir -p tmp_dir/
+	cp -r src/coffee/ tmp_dir/
+	find tmp_dir/ -type f -exec \
+	sed -i \
+		-e 's_^_//_' \
+		-e 's_^//##_   _' {} \;
+	jsduck tmp_dir/coffee/* -o docs/ --title="Bola rebota"
+	rm -rf tmp_dir/
+	find docs/source/ -type f -exec \
+	sed -i \
+		-e 's_^//__' \
+		-e 's_>//_>_' {} \;
+	google-chrome `pwd`/docs/index.html
 
 force:
 
