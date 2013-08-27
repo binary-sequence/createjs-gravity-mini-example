@@ -17,7 +17,7 @@ define ()->
       @speed_y += 0.4; # Gravity.
 
       if @y + @speed_y >= 176
-        @speed_y -= 0.8 # Colision, loses speed.
+        @speed_y -= 0.8 # Collision, loses speed.
         @speed_y *= -1  # Invert direction.
         @y = 176        # Does not go through floor.
       else
