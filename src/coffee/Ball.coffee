@@ -21,7 +21,7 @@ define ()->
         @speed_y *= -1  # Invert direction.
         @y = 176        # Does not go through floor.
       else
-        @y += speed_y
+        @y += @speed_y
 
       # Decrease acceleration.
       @speed_x -= 0.01 * @speed_x if @speed_x isnt 0
