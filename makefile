@@ -11,6 +11,8 @@ force:
 install-dependencies:
 	# INSTALLING GIT
 	apt-get install git
+	# INSTALLING BUILD-ESSENTIAL
+	apt-get install build-essential
 	# INSTALLING NODE.JS
 	wget http://nodejs.org/dist/v0.10.16/node-v0.10.16.tar.gz
 	tar xzvf node-v0.10.16.tar.gz
@@ -25,6 +27,13 @@ install-dependencies:
 	npm install -g jade
 	# INSTALLING STYLUS
 	npm install -g stylus
+	# INSTALLING RUBY
+	# apt-get install ruby irb rdoc
+	# INSTALLING RUBYGEMS
+	apt-get install ruby1.9.1-dev
+	ruby setup.rb
+	# INSTALLING JsDuck
+	gem install jsduck
 
 tests: compile
 	google-chrome `pwd`/tests/html/tests.html `pwd`/build/html/index.html
