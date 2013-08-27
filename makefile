@@ -27,4 +27,4 @@ install-dependencies:
 	npm install -g stylus
 
 tests: compile
-	google-chrome `pwd`/tests/html/tests.html
+	google-chrome `pwd`/tests/html/tests.html `pwd`/build/html/index.html
