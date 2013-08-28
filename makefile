@@ -9,7 +9,7 @@ docs: force
 	find tmp_dir/ -type f -exec \
 	sed -i \
 		-e 's_^_//_' \
-		-e 's_^//##_   _' {} \;
+		-e 's_^//##_\t_' {} \;
 	jsduck tmp_dir/coffee/* -o docs/ --title="Gravity (mini example)" --categories="jsduck.categories.json"
 	rm -rf tmp_dir/
 	find docs/source/ -type f -exec \
