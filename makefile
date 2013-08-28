@@ -10,7 +10,7 @@ docs: force
 	sed -i \
 		-e 's_^_//_' \
 		-e 's_^//##_   _' {} \;
-	jsduck tmp_dir/coffee/* -o docs/ --title="Bola rebota"
+	jsduck tmp_dir/coffee/* -o docs/ --title="Gravity (mini example)" --categories="jsduck.categories.json"
 	rm -rf tmp_dir/
 	find docs/source/ -type f -exec \
 	sed -i \

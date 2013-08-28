@@ -1,0 +1,13 @@
+[
+	{
+		"name": "Gravity (mini example)",
+		"groups": [
+			{
+				"name": "Classes",
+				"classes": [
+					"Ball"
+				]
+			}
+		]
+	}
+]
