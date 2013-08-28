@@ -45,6 +45,8 @@ require(['js/libs/createjs-2013.05.14.min', 'js/Ball'], function(createjs, Ball)
 		expected.speed_x -= 0.01 * expected.speed_x;
 		expected.x += expected.speed_x;
 		deepEqual(result, expected, "update(), bottom collision.");
+		// TODO: update(), left collision.
+		// TODO: update(), right collision.
 		// TODO: Check stop.
 	});
 
