@@ -35,19 +35,28 @@ require(['js/libs/createjs-2013.05.14.min', 'js/Ball'], function(createjs, Ball)
 		expected.speed_x -= 0.01 * expected.speed_x;
 		expected.x += expected.speed_x;
 		deepEqual(result, expected, "update(), gravity, acceleration, friction.");
-		result = new Ball(150, 175.6, 4, 0);
+		//
+		result = new Ball(150, 176, 4, 0);
 		result.update();
-		expected = new Ball(150, 175.6, 4, 0);
-		expected.speed_y += 0.4;
-		expected.speed_y -= 0.8;
-		expected.speed_y *= -1;
-		expected.y = 176;
-		expected.speed_x -= 0.01 * expected.speed_x;
-		expected.x += expected.speed_x;
-		deepEqual(result, expected, "update(), bottom collision.");
-		// TODO: update(), left collision.
-		// TODO: update(), right collision.
-		// TODO: Check stop.
+		deepEqual(result.y, 176, "update(), bottom collision.");
+		//
+		result = new Ball(0, 50, -4, 0);
+		result.update();
+		expected = (-4 - 0.01 * -4) * -1;
+		deepEqual(result.speed_x, expected, "update(), left collision.");
+		//
+		result = new Ball(302, 50, 4, 0);
+		result.update();
+		expected = (4 - 0.01 * 4) * -1;
+		deepEqual(result.speed_x, expected, "update(), right collision.");
+		//
+		result = new Ball(150, 176, 4, 0.3);
+		result.update();
+		deepEqual(result.speed_y, 0, "update(), No infinite vertical movement.");
+		//
+		result = new Ball(150, 50, 0.01, 0);
+		result.update();
+		deepEqual(result.speed_x, 0, "update(), No infinite horizontal movement.");
 	});
 
 	console.info('End of tests.js');
