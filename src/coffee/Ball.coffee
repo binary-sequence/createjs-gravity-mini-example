@@ -8,10 +8,10 @@ define ()->
 ##	/**
 ##	  * Constructor of Ball.
 ##	  * @constructor
-##	  * @param {Numeric} [x=150] Position in the x-axis.
-##	  * @param {Numeric} [y=50] Position in the y-axis.
-##	  * @param {Numeric} [speed_x=4] Speed in the x-axis.
-##	  * @param {Numeric} [speed_y=0] Speed in the y-axis.
+##	  * @param {Number} [x=150] Position in the x-axis.
+##	  * @param {Number} [y=50] Position in the y-axis.
+##	  * @param {Number} [speed_x=4] Speed in the x-axis.
+##	  * @param {Number} [speed_y=0] Speed in the y-axis.
 ##	  */
 		constructor: (@x, @y, @speed_x, @speed_y)->
 			console.info 'Instance of Ball '
@@ -50,7 +50,7 @@ define ()->
 				@x = 0 if @x < 0      # Does not go through walls.
 				@x = 301 if @x >= 302 # Does not go through walls.
 
-			return undefined
+			return `void 0`
 
 	console.info 'End of Ball.js'
 	return Ball
