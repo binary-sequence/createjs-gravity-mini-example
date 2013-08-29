@@ -4,11 +4,12 @@ require.config
 		html: '../html/'
 		js: '../js/'
 
-require ['js/libs/requirejs.domReady', 'js/Ball'], (domReady, Ball)->
+require ['js/libs/requirejs.domReady', 'js/GravityMiniExample', 'js/Ball'], (domReady, GravityMiniExample, Ball)->
 	console.info 'Beginning of main.js'
+	gravity_mini_example = new GravityMiniExample()
+	gravity_mini_example.preload_data()
 	# TODO: Preload images.
 	# TODO: Preload sounds.
-	ball = new Ball()
 	# TODO: Initialize createjs.
 	domReady ()->
 		console.info "DOM is ready"

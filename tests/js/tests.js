@@ -6,7 +6,7 @@ require.config({
 	}
 });
 
-require(['js/libs/createjs-2013.05.14.min', 'js/Ball'], function(createjs, Ball) {
+require(['js/libs/createjs-2013.05.14.min', 'js/Ball', 'js/GravityMiniExample'], function(createjs, Ball, GravityMiniExample) {
 	console.info('Beginning of tests.js');
 
 	test("Ball class", function() {
@@ -57,6 +57,13 @@ require(['js/libs/createjs-2013.05.14.min', 'js/Ball'], function(createjs, Ball)
 		result = new Ball(150, 50, 0.01, 0);
 		result.update();
 		deepEqual(result.speed_x, 0, "update(), No infinite horizontal movement.");
+	});
+
+	test("GravityMiniExample class", function() {
+		// Test properties on GravityMiniExample().
+		result = new GravityMiniExample();
+		deepEqual( typeof(result), 'object', "typeof(GravityMiniExample()) == 'object'" );
+		result.preload_data();
 	});
 
 	console.info('End of tests.js');
