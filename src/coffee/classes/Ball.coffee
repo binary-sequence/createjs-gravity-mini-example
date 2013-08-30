@@ -19,6 +19,7 @@ define ()->
 			@y = 50 if y is undefined
 			@speed_x = 4 if speed_x is undefined
 			@speed_y = 0 if speed_y is undefined
+			@frame = 0
 			console.info @
 ##	/**
 ##	  * @method update
