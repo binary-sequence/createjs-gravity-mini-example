@@ -4,7 +4,7 @@ require.config
 		html: '../html/'
 		js: '../js/'
 
-require ['js/libs/requirejs.domReady', 'js/classes/GravityMiniExample', 'js/classes/Ball'], (domReady, GravityMiniExample, Ball)->
+require ['js/libs/requirejs.domReady', 'js/classes/GravityMiniExample'], (domReady, GravityMiniExample)->
 	console.info 'Beginning of main.js'
 	domReady ()->
 		gravity_mini_example = new GravityMiniExample()
