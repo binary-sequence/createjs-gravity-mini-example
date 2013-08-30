@@ -54,6 +54,3 @@ install-dependencies:
 	ruby setup.rb
 	# INSTALLING JsDuck
 	gem install jsduck
-
-localtests: compile
-	google-chrome `pwd`/tests/html/tests.html `pwd`/build/html/index.html
