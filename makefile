@@ -2,9 +2,14 @@ apachetests: compile
 	google-chrome localhost/test/createjs-gravedad-mini-ejemplo/tests/html/tests.html localhost/test/createjs-gravedad-mini-ejemplo/build/html/index.html
 
 compile: force
+	mkdir -p build/html
 	jade -o build/html src/jade/
+	mkdir -p build/css
 	stylus -o build/css/ src/stylus/*
+	mkdir -p build/js
 	coffee -c -o build/js src/coffee
+	cp -r src/css/libs/ build/css/libs/
+	cp -r src/js/libs/ build/js/libs/
 
 docs: force
 	mkdir -p tmp_dir/
