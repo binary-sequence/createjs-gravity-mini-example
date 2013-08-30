@@ -8,8 +8,8 @@ compile: force
 	stylus -o build/css/ src/stylus/*
 	mkdir -p build/js
 	coffee -c -o build/js src/coffee
-	cp -r src/css/libs/ build/css/libs/
-	cp -r src/js/libs/ build/js/libs/
+	cp -r src/css/libs/ build/css/
+	cp -r src/js/libs/ build/js/
 
 docs: force
 	mkdir -p tmp_dir/
