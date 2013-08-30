@@ -1,6 +1,3 @@
-apachetests: compile
-	google-chrome localhost/test/createjs-gravedad-mini-ejemplo/tests/html/tests.html localhost/test/createjs-gravedad-mini-ejemplo/build/html/index.html
-
 compile: force
 	mkdir -p build/html
 	jade -o build/html src/jade/
@@ -54,3 +51,6 @@ install-dependencies:
 	ruby setup.rb
 	# INSTALLING JsDuck
 	gem install jsduck
+
+tests: compile
+	google-chrome localhost/test/createjs-gravedad-mini-ejemplo/tests/html/tests.html localhost/test/createjs-gravedad-mini-ejemplo/build/html/index.html
