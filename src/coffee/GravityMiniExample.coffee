@@ -16,6 +16,15 @@ define ()->
 			@preloadjs = null
 			console.info @
 ##	/**
+##	  * @method handleComplete
+##	  * Executed when preloading is completed.
+##	  * @param {Object} e Event data.
+##	  */
+		handleComplete: (e)->
+			console.info 'handleComplete'
+			console.info e
+			return `void 0`
+##	/**
 ##	  * @method handleFileError
 ##	  * Executed when preloading of an image fails.
 ##	  * @param {Object} e Event data.
@@ -32,8 +41,7 @@ define ()->
 		handleFileLoad: (e)->
 			console.info 'handleFileLoad'
 			console.info e
-			@images[e.src] = e.result # Get a reference to the loaded image (<img/>)
-			return e.result
+			return e.item # Reference to the loaded file (<img/>, <audio>)
 ##	/**
 ##	  * @method handleFileProgress
 ##	  * TODO: Description.
@@ -65,12 +73,13 @@ define ()->
 				{id: "sound/ballbounces", src: @data_path + "sound/ballbounces.mp3"}
 			]
 			@preloadjs = new createjs.LoadQueue(true)
-			@preloadjs.addEventListener("fileLoad", @handleFileLoad)
+			@preloadjs.addEventListener("fileload", @handleFileLoad)
 			@preloadjs.addEventListener("complete", @handleComplete)
-			# @preloadjs.onProgress = handleOverallProgress
-			# @preloadjs.onFileProgress = handleFileProgress
-			# @preloadjs.onError = handleFileError
+			@preloadjs.addEventListener("onProgress", @handleOverallProgress)
+			@preloadjs.addEventListener("fileprogress", @handleFileProgress)
+			@preloadjs.addEventListener("error", @handleFileError)
 			# @preloadjs.setMaxConnections(5)
+			@preloadjs.installPlugin(createjs.Sound)
 			@preloadjs.loadManifest(data_manifest)
 			return `void 0`
 
