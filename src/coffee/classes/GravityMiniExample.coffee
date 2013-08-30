@@ -26,7 +26,7 @@ define ['js/classes/Ball'], (Ball)->
 ##	  * @method adjustCanvasScreen
 ##	  * Adjust the size of the canvas depending on actual ratio.
 ##	  */
-		adjustGameScreen: ()->
+		adjustCanvasScreen: ()->
 			# Get desire ratio = width / height.
 			widthToHeight = @width / @height;
 
