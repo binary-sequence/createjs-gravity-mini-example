@@ -9,8 +9,6 @@ require ['js/libs/requirejs.domReady', 'js/classes/GravityMiniExample', 'js/clas
 	domReady ()->
 		gravity_mini_example = new GravityMiniExample()
 		gravity_mini_example.preload_data()
-		# TODO: Preload images.
-		# TODO: Preload sounds.
 		# TODO: Initialize createjs.
 		console.info "DOM is ready"
 		stage = new createjs.Stage("canvasScreen")
