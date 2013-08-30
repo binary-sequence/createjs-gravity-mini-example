@@ -7,17 +7,10 @@ require.config
 require ['js/libs/requirejs.domReady', 'js/classes/GravityMiniExample'], (domReady, GravityMiniExample)->
 	console.info 'Beginning of main.js'
 	domReady ()->
-		gravity_mini_example = new GravityMiniExample()
-		gravity_mini_example.preload_data()
-		# TODO: Initialize createjs.
 		console.info "DOM is ready"
-		stage = new createjs.Stage("canvasScreen")
-		circle = new createjs.Shape()
-		circle.graphics.beginFill("red").drawCircle(0, 0, 50)
-		circle.x = 100
-		circle.y = 100
-		stage.addChild(circle)
-		stage.update()
+		gravity_mini_example = new GravityMiniExample(true)
+		gravity_mini_example.preload_data()
+		gravity_mini_example.updateCanvas()
 		# TODO: Initialize stats (fps).
 		# TODO: Events: onload, click, resize, oncontextmenu
 	console.info 'End of main.js'

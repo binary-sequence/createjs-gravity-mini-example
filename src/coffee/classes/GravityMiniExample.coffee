@@ -1,19 +1,24 @@
-define ()->
+define ['js/classes/Ball'], (Ball)->
 	console.info 'Beginning of GravityMiniExample.js'
 ##/**
 ## * @class GravityMiniExample
-## * Set of application methods.
+## * Set of application methods: Manage graphics and elements.
 ## */
 	class GravityMiniExample
 ##	/**
 ##	  * Constructor of GravityMiniExample.
 ##	  * @constructor
 ##	  */
-		constructor: ()->
+		constructor: (@debugMode, @width, @height)->
 			console.info 'Instance of GravityMiniExample'
+			@debugMode = false if debugMode is undefined
+			@width = 320 if width is undefined
+			@height = 240 if height is undefined
 			@data_path = '../../data/'
 			@images = {}
 			@preloadjs = null
+			@ball = new Ball()
+			@stage = new createjs.Stage("canvasScreen")
 			console.info @
 ##	/**
 ##	  * @method handleComplete
@@ -60,6 +65,17 @@ define ()->
 			console.info 'handleOverallProgress'
 			console.info 'Progress: ' + @preloadjs.progress * 100
 			return @preloadjs.progress * 100
+##	/**
+##	  * @method updateCanvas
+##	  * Update the graphics in the canvas.
+##	  */
+		updateCanvas: ()->
+			circle = new createjs.Shape()
+			circle.graphics.beginFill("red").drawCircle(0, 0, 50)
+			circle.x = 100
+			circle.y = 100
+			@stage.addChild(circle)
+			@stage.update()
 ##	/**
 ##	  * @method preload_data
 ##	  * Preloads images and sounds of the application.
