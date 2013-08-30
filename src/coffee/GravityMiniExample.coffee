@@ -11,9 +11,9 @@ define ()->
 ##	  */
 		constructor: ()->
 			console.info 'Instance of GravityMiniExample'
-			@data_path = '../data/'
+			@data_path = '../../data/'
 			@images = {}
-			@preload = null
+			@preloadjs = null
 			console.info @
 ##	/**
 ##	  * @method handleFileError
@@ -50,31 +50,28 @@ define ()->
 ##	  */
 		handleOverallProgress: (e)->
 			console.info 'handleOverallProgress'
-			console.info 'Progress: ' + @preload.progress * 100
-			return @preload.progress * 100
+			console.info 'Progress: ' + @preloadjs.progress * 100
+			return @preloadjs.progress * 100
 ##	/**
 ##	  * @method preload_data
 ##	  * Preloads images and sounds of the application.
 ##	  * @param {Object} e Event data.
 ##	  */
 		preload_data: ()->
-			images_paths: [
-				@data_path + "img/background.bmp"
-				@data_path + "img/ball0.png"
-				@data_path + "img/ball1.png"
+			data_manifest = [
+				{id: "img/background",    src: @data_path + "img/background.bmp"}
+				{id: "img/ball0",         src: @data_path + "img/ball0.png"}
+				{id: "img/ball1",         src: @data_path + "img/ball1.png"}
+				{id: "sound/ballbounces", src: @data_path + "sound/ballbounces.mp3"}
 			]
-			console.info @preload
-			#@preload.close() if @preload != null and @preload != 'undefined'
-			@preload = new createjs.PreloadJS()
-			console.info @preload
-			@preload.onFileLoad = handleFileLoad
-			@preload.onProgress = handleOverallProgress
-			@preload.onFileProgress = handleFileProgress
-			@preload.onError = handleFileError
-			@preload.setMaxConnections(5)
-			while (@images_paths.length > 0)
-				item = @images_paths.shift()
-				@preload.loadFile(item)
+			@preloadjs = new createjs.LoadQueue(true)
+			@preloadjs.addEventListener("fileLoad", @handleFileLoad)
+			@preloadjs.addEventListener("complete", @handleComplete)
+			# @preloadjs.onProgress = handleOverallProgress
+			# @preloadjs.onFileProgress = handleFileProgress
+			# @preloadjs.onError = handleFileError
+			# @preloadjs.setMaxConnections(5)
+			@preloadjs.loadManifest(data_manifest)
 			return `void 0`
 
 	console.info 'End of GravityMiniExample.js'
