@@ -21,6 +21,7 @@ define ['js/classes/Ball'], (Ball)->
 			@stage = new createjs.Stage("canvasScreen")
 			@stage.canvas.width = @width
 			@stage.canvas.height = @height
+			@adjustCanvasScreen()
 			console.info @
 ##	/**
 ##	  * @method adjustCanvasScreen
