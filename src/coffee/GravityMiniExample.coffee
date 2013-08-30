@@ -17,7 +17,7 @@ define ()->
 			console.info @
 ##	/**
 ##	  * @method handleComplete
-##	  * Executed when preloading is completed.
+##	  * It is fired when the entire queue has been loaded.
 ##	  * @param {Object} e Event data.
 ##	  */
 		handleComplete: (e)->
@@ -26,7 +26,7 @@ define ()->
 			return `void 0`
 ##	/**
 ##	  * @method handleFileError
-##	  * Executed when preloading of an image fails.
+##	  * It is fired when the loader encounters an error.
 ##	  * @param {Object} e Event data.
 ##	  */
 		handleFileError: (e)->
@@ -35,7 +35,7 @@ define ()->
 			return `void 0`
 ##	/**
 ##	  * @method handleFileLoad
-##	  * Executed when an image is preloaded.
+##	  * It is fired when an individual file has loaded, and been processed.
 ##	  * @param {Object} e Event data.
 ##	  */
 		handleFileLoad: (e)->
@@ -44,7 +44,7 @@ define ()->
 			return e.item # Reference to the loaded file (<img/>, <audio>)
 ##	/**
 ##	  * @method handleFileProgress
-##	  * TODO: Description.
+##	  * It is fired when an an individual file progress changes.
 ##	  * @param {Object} e Event data.
 ##	  */
 		handleFileProgress: (e)->
@@ -53,7 +53,7 @@ define ()->
 			return `void 0`
 ##	/**
 ##	  * @method handleOverallProgress
-##	  * TODO: Description.
+##	  * It is fired when the overall progress changes.
 ##	  * @param {Object} e Event data.
 ##	  */
 		handleOverallProgress: (e)->
@@ -67,18 +67,17 @@ define ()->
 ##	  */
 		preload_data: ()->
 			data_manifest = [
-				{id: "img/background",    src: @data_path + "img/background.bmp"}
-				{id: "img/ball0",         src: @data_path + "img/ball0.png"}
-				{id: "img/ball1",         src: @data_path + "img/ball1.png"}
-				{id: "sound/ballbounces", src: @data_path + "sound/ballbounces.mp3"}
+				{id: "img/background",    src: "img/background.bmp"}
+				{id: "img/ball0",         src: "img/ball0.png"}
+				{id: "img/ball1",         src: "img/ball1.png"}
+				{id: "sound/ballbounces", src: "sound/ballbounces.mp3"}
 			]
-			@preloadjs = new createjs.LoadQueue(true)
+			@preloadjs = new createjs.LoadQueue(true, @data_path)
 			@preloadjs.addEventListener("fileload", @handleFileLoad)
 			@preloadjs.addEventListener("complete", @handleComplete)
 			@preloadjs.addEventListener("onProgress", @handleOverallProgress)
 			@preloadjs.addEventListener("fileprogress", @handleFileProgress)
 			@preloadjs.addEventListener("error", @handleFileError)
-			# @preloadjs.setMaxConnections(5)
 			@preloadjs.installPlugin(createjs.Sound)
 			@preloadjs.loadManifest(data_manifest)
 			return `void 0`
