@@ -19,7 +19,37 @@ define ['js/classes/Ball'], (Ball)->
 			@preloadjs = null
 			@ball = new Ball()
 			@stage = new createjs.Stage("canvasScreen")
+			@stage.canvas.width = @width
+			@stage.canvas.height = @height
 			console.info @
+##	/**
+##	  * @method adjustCanvasScreen
+##	  * Adjust the size of the canvas depending on actual ratio.
+##	  */
+		adjustGameScreen: ()->
+			# Get desire ratio = width / height.
+			widthToHeight = @width / @height;
+
+			# Get actual ratio = width / height.
+			newWidth = window.innerWidth;
+			newHeight = window.innerHeight;
+			newWidthToHeight = newWidth / newHeight;
+
+			# If it is wider than higher...
+			if (newWidthToHeight > widthToHeight)
+				# fit height.
+				newWidth = newHeight * widthToHeight
+				@stage.canvas.style.height = newHeight + 'px'
+				@stage.canvas.style.width = newWidth + 'px'
+			else # If it is higher than wider...
+				# fit width.
+				newHeight = newWidth / widthToHeight
+				@stage.canvas.style.width = newWidth + 'px'
+				@stage.canvas.style.height = newHeight + 'px'
+
+			# Center canvas.
+			@stage.canvas.style.marginTop = (-newHeight / 2) + 'px';
+			@stage.canvas.style.marginLeft = (-newWidth / 2) + 'px';
 ##	/**
 ##	  * @method handleComplete
 ##	  * It is fired when the entire queue has been loaded.

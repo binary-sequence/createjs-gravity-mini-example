@@ -11,6 +11,7 @@ require ['js/libs/requirejs.domReady', 'js/classes/GravityMiniExample'], (domRea
 		gravity_mini_example = new GravityMiniExample(true)
 		gravity_mini_example.preload_data()
 		gravity_mini_example.updateCanvas()
+		window.addEventListener('resize', ()-> gravity_mini_example.adjustGameScreen())
 		# TODO: Initialize stats (fps).
 		# TODO: Events: onload, click, resize, oncontextmenu
 	console.info 'End of main.js'
