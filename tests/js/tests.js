@@ -6,7 +6,7 @@ require.config({
 	}
 });
 
-require(['js/libs/createjs-2013.05.14.min', 'js/Ball', 'js/GravityMiniExample'], function(createjs, Ball, GravityMiniExample) {
+require(['js/libs/createjs-2013.05.14.min', 'js/classes/Ball', 'js/classes/GravityMiniExample'], function(createjs, Ball, GravityMiniExample) {
 	console.info('Beginning of tests.js');
 
 	test("Ball class", function() {
